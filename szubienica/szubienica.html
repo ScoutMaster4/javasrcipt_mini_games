@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Szubienica!</title>
+<body>
+  <h1>Szubienica</h1>
+<script>
+//utwórz tablicę ze słowami
+  var słowa = [
+    "informatyka",
+    "programowanie",
+    "javascript",
+	];
+  //Wybierz losowę słowo
+  var słowo = słowa[Math.floor(Math.random()*słowa.length)];
+  //Skonfiguruj tablicę z odpowiedziami
+  var odpowiedzi = [];
+  for (var i=0;i<słowo.length;i++) {
+    odpowiedzi[i]="_";
+  }
+  var pozostałeLitery = słowo.length;
+  //Główna pętla gry
+while (pozostałeLitery>0) {
+  //pokaż graczowi bieżący wynik
+  alert(odpowiedzi.join(""));
+  //wczytaj strzał użytkownika
+  var strzał = prompt("Podaj literę albo kliknij Anuluj, aby zakończyć grę.")
+  if(strzał===null){
+    break;
+    //wyjdź z głównej pętli gry
+  }
+  else if(strzał.length!==1) {
+    alert("Proszę podaj tylko jedną literę")
+  }
+  else {
+    //Zaktualizuj stan gry na podstawie strzału
+    for(var j=0; j< słowo.length;j++) {
+      if(słowo[j]===strzał) {
+        odpowiedzi[j] = strzał;
+        pozostałeLitery--;
+      }
+    }
+  }
+//Koniec głównej pętli gry
+}
+//Pokaż odpowiedzi i złóż graczowi gratulacje
+alert(odpowiedzi.join(""));
+alert("Dobra robota! Szukane słowo to" + słowo);
+  </script>
+</head>
+</html>
